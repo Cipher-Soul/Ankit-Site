@@ -1,1 +1,1 @@
-web: gunicorn Ankit-Site.wsgi --log-file -
+web: gunicorn AnkitSite.wsgi --log-file -
