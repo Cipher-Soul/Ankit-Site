@@ -63,7 +63,7 @@
           {% for project in projects %}
           <div class="project-card border {{project.category}} bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
             <a href="{% url 'project_click' project.id %}" target="_blank">
-              <img src="{{project.project_image}}" alt="Python Project 1" class="mb-4 w-full h-40 object-cover ">
+              <img src="{{project.project_image.url}}" alt="Python Project 1" class="mb-4 w-full h-40 object-cover ">
               <h3 class="text-xl font-semibold mb-2">{{project.name}}</h3>
               <p class="text-gray-600 dark:text-gray-300">{{project.description}}</p>
               <p class="w-full  text-gray-300 hover:text-blue-500  text-left"><i class="fa-regular fa-eye text-sm  "></i>{{project.click_count}}</p>

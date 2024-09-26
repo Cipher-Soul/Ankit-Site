@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -10,7 +11,7 @@ class Category(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=200)
     project_link = models.URLField(max_length=200)
-    project_image =  models.URLField(max_length=200)
+    project_image = CloudinaryField('image')
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

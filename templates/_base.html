@@ -173,8 +173,10 @@
           }
         });
         // Page Load Animation
-    window.addEventListener('load', () => {
-        document.body.classList.add('loaded');
+        $(window).on('load', function() {
+          $('.loader').fadeOut(500, function() {
+              $('#main-content').fadeIn(500);
+          });
       });
         // Project filtering logic
         function filterProjects(language) {

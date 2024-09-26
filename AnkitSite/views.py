@@ -3,6 +3,7 @@ from .models import Project,Category
 
 # Home page
 def index(request):
+    
     projects = Project.objects.all()[:2]
     data={
         'projects':projects,
