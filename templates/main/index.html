@@ -5,7 +5,7 @@
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Left: Image Section -->
       <div class="flex items-center justify-center">
-        <img src="https://via.placeholder.com/400" alt="About Me" class=" shadow-lg w-full max-w-md transition-transform duration-300 transform hover:scale-105">
+        <img src="https://i.pinimg.com/originals/94/e4/cb/94e4cb5ae194975f6dc84d1495c3abcd.gif" alt="About Me" class="hover:skew-y-3 shadow-lg w-full max-w-md transition-transform duration-300 transform hover:scale-105">
       </div>
   
       <!-- Right: About Me Section -->
@@ -59,31 +59,19 @@
         </button>
       </div>
       <!-- Project Cards -->
-      <div id="project-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="project-card border javascript bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
-          <img src="path-to-your-image/javascript-project.jpg" alt="JavaScript Project 1" class="mb-4 w-full h-40 object-cover rounded">
-          <h3 class="text-xl font-semibold mb-2">JavaScript Project 1</h3>
-          <p class="text-gray-600 dark:text-gray-300">Description of the JavaScript project.</p>
-        </div>
-        <div class="project-card border python bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
-          <img src="path-to-your-image/python-project.jpg" alt="Python Project 1" class="mb-4 w-full h-40 object-cover rounded">
-          <h3 class="text-xl font-semibold mb-2">Python Project 1</h3>
-          <p class="text-gray-600 dark:text-gray-300">Description of the Python project.</p>
-        </div>
-        <div class="project-card border react bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
-          <img src="path-to-your-image/react-project.jpg" alt="React Project 1" class="mb-4 w-full h-40 object-cover rounded">
-          <h3 class="text-xl font-semibold mb-2">React Project 1</h3>
-          <p class="text-gray-600 dark:text-gray-300">Description of the React project.</p>
-        </div>
-        <div class="project-card border javascript bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
-          <img src="path-to-your-image/javascript-project2.jpg" alt="JavaScript Project 2" class="mb-4 w-full h-40 object-cover rounded">
-          <h3 class="text-xl font-semibold mb-2">JavaScript Project 2</h3>
-          <p class="text-gray-600 dark:text-gray-300">Description of the JavaScript project.</p>
-        </div>
-        <div class="project-card border python bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
-          <img src="path-to-your-image/python-project2.jpg" alt="Python Project 2" class="mb-4 w-full h-40 object-cover rounded">
-          <h3 class="text-xl font-semibold mb-2">Python Project 2</h3>
-          <p class="text-gray-600 dark:text-gray-300">Description of the Python project.</p>
+          <div id="project-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for project in projects %}
+          <div class="project-card border {{project.category}} bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+            <a href="{% url 'project_click' project.id %}" target="_blank">
+              <img src="{{project.project_image}}" alt="Python Project 1" class="mb-4 w-full h-40 object-cover ">
+              <h3 class="text-xl font-semibold mb-2">{{project.name}}</h3>
+              <p class="text-gray-600 dark:text-gray-300">{{project.description}}</p>
+              <p class="w-full  text-gray-300 hover:text-blue-500  text-left"><i class="fa-regular fa-eye text-sm  "></i>{{project.click_count}}</p>
+            </a>
+            
+          </div>
+          
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -99,22 +87,22 @@
         <!-- Example Technology Card -->
         <div class="group relative p-6 bg-white shadow-md rounded-lg flex items-center justify-center transition-transform transform hover:scale-105 duration-300 ease-in-out">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/html5.svg" alt="HTML5" class="h-12 w-12 text-red-600">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
         </div>
   
         <div class="group relative p-6 bg-white shadow-md rounded-lg flex items-center justify-center transition-transform transform hover:scale-105 duration-300 ease-in-out">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/css3.svg" alt="CSS3" class="h-12 w-12 text-blue-600">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
         </div>
   
         <div class="group relative p-6 bg-white shadow-md rounded-lg flex items-center justify-center transition-transform transform hover:scale-105 duration-300 ease-in-out">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/javascript.svg" alt="JavaScript" class="h-12 w-12 text-yellow-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
         </div>
   
         <div class="group relative p-6 bg-white shadow-md rounded-lg flex items-center justify-center transition-transform transform hover:scale-105 duration-300 ease-in-out">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/tailwindcss.svg" alt="Tailwind CSS" class="h-12 w-12 text-blue-400">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
         </div>
       </div>
     </div>
@@ -133,28 +121,28 @@
           <h3 class="text-xl font-semibold mb-2">Blog Post 1</h3>
           <p class="text-gray-600 dark:text-gray-300">Brief description of the blog post.</p>
           <a href="#" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition">Visit</a>
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
 
         </div>
         <div class="group bg-white dark:bg-gray-700 p-6 transition-transform transform hover:scale-105 duration-300 ease-in-out shadow-lg">
           <h3 class="text-xl font-semibold mb-2">Blog Post 2</h3>
           <p class="text-gray-600 dark:text-gray-300">Brief description of the blog post.</p>
           <a href="#" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition">Visit</a>
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
 
         </div>
         <div class="group bg-white dark:bg-gray-700 p-6 transition-transform transform hover:scale-105 duration-300 ease-in-out shadow-lg">
           <h3 class="text-xl font-semibold mb-2">Blog Post 3</h3>
           <p class="text-gray-600 dark:text-gray-300">Brief description of the blog post.</p>
           <a href="#" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition">Visit</a>
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
 
         </div>
         <div class="group bg-white dark:bg-gray-700 p-6 transition-transform transform hover:scale-105 duration-300 ease-in-out shadow-lg">
           <h3 class="text-xl font-semibold mb-2">Blog Post 4</h3>
           <p class="text-gray-600 dark:text-gray-300">Brief description of the blog post.</p>
           <a href="#" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition">Visit</a>
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg"></div>
 
         </div>
       </div>
