@@ -1,148 +1,199 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" class="light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>
-    {% block title %}
-    Ankit-K
-    {% endblock %}
-  </title>
-  
-  <!-- FontAwesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{% block title %} Ankit-K {% endblock %}</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-    }
-  </script>
-</head>
-<body class="dark:bg-black bg-gray-100 text-gray-900 transition-colors duration-300" id="theme">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <!-- Fixed Navbar with Dark Mode Toggle -->
-  <nav class="fixed w-full bg-white dark:text-slate-100 dark:bg-gray-800 z-10 transition-colors duration-300 sm:px-10">
-    <div class="container mx-auto p-4 flex justify-between items-center">
-      <a href="{% url 'home' %}" class="text-xl font-bold"><span class="text-2xl text-indigo-500">Ankit</span>-K</a>
-      <div class="hidden sm:flex space-x-4 items-center">
-        <a href="{% url 'project' %}" class="hover:text-blue-500 dark:hover:text-blue-400 transition"><i class="fa-regular fa-folder px-2"></i>Projects</a>
-        <a href="{% url 'blogs' %}" class="hover:text-blue-500 dark:hover:text-blue-400 transition"><i class="fa-solid fa-blog px-2"></i>Blog</a>
-        <a href="#contact" class="hover:text-blue-500 dark:hover:text-blue-400 transition"><i class="fa-solid fa-phone px-2"></i>Contact</a>
-        <!-- Dark Mode Toggle Button -->
-        <button id="theme-toggle" class="text-xl focus:outline-none hover:text-yellow-500 dark:hover:text-blue-400 transition">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+  </head>
+  <body
+    class="dark:bg-black bg-gray-100 text-gray-900 transition-all duration-300"
+    id="theme"
+  >
+    <div
+      id="sideMenu"
+      class="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-900 dark:border dark:border-slate-800 dark:text-white shadow-lg transform z-50 -translate-x-full transition-transform duration-300 ease-in-out opacity-0 transition-opacity duration-300 ease-in-out"
+    >
+      <div class="p-4 flex flex-col pt-[50px] items-center gap-4">
+        <a
+          href="{% url 'project' %}"
+          class="hover:text-blue-500 dark:hover:text-blue-400 transition"
+          ><i class="fa-regular fa-folder px-2"></i>Projects</a
+        >
+        <a
+          href="#contact"
+          class="hover:text-blue-500 dark:hover:text-blue-400 transition"
+          ><i class="fa-solid fa-phone px-2"></i>Contact</a
+        >
+        <button
+          id="theme-toggle"
+          class="text-xl focus:outline-none hover:text-yellow-500 dark:hover:text-blue-400 transition"
+        >
           <i id="theme-icon" class="fas fa-moon"></i>
         </button>
       </div>
     </div>
-  </nav>
 
-  {% block content %}
-  {% endblock %}
+    <nav
+      class="fixed w-full bg-white dark:text-slate-100 dark:bg-gray-800 z-40 transition-colors duration-300 sm:px-10"
+    >
+      <div class="container mx-auto p-4 flex justify-between items-center">
+        <a href="{% url 'home' %}" class="text-xl font-bold"
+          ><span class="text-2xl text-indigo-500">Ankit</span>-K</a
+        >
+        <div class="hidden sm:flex space-x-4 items-center">
+          <a
+            href="{% url 'project' %}"
+            class="hover:text-blue-500 dark:hover:text-blue-400 transition"
+            ><i class="fa-regular fa-folder px-2"></i>Projects</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-blue-500 dark:hover:text-blue-400 transition"
+            ><i class="fa-solid fa-phone px-2"></i>Contact</a
+          >
+        </div>
+        <div id="mobile-menu-toogle" class="flex sm:hidden">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </div>
+      </div>
+    </nav>
 
-    <!-- Footer -->
-    <footer class="bg-stone-100 text-stone-900 dark:bg-gray-900 dark:text-gray-400 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-1 items-center min-sm:divide-y sm:divide-x justify-center md:grid-cols-3 gap-8">
-            
-            <!-- Navigation Links -->
-            <div class=" text-center">
-              <h3 class="text-lg font-semibold dark:text-gray-100">Navigation</h3>
-              <ul class="mt-4 space-y-2 ">
-                <li>
-                  <a href="#home" class="hover:text-white transition-colors duration-300">Home</a>
-                </li>
-                <li>
-                  <a href="#about" class="hover:text-white transition-colors duration-300">About</a>
-                </li>
-                <li>
-                  <a href="#projects" class="hover:text-white transition-colors duration-300">Projects</a>
-                </li>
-                <li>
-                  <a href="#contact" class="hover:text-white transition-colors duration-300">Contact</a>
-                </li>
-              </ul>
-            </div>
-            
-            <!-- Social Links -->
-            <div class=" ">
-              <h3 class="text-lg font-semibold text-gray-100">Follow Me</h3>
-              <div class="mt-4  flex justify-center space-x-4">
-                <!-- GitHub -->
-                <a href="https://github.com/yourprofile" target="_blank" class="text-gray-700 hover:text-blue-500 dark:hover:text-white transition-colors duration-300">
-                  <i class="fab fa-github text-2xl"></i>
-                </a>
-                <!-- LinkedIn -->
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-gray-700 hover:text-blue-500 dark:hover:text-white transition-colors duration-300">
-                  <i class="fab fa-linkedin text-2xl"></i>
-                </a>
-                <!-- Twitter -->
-                <a href="https://twitter.com/yourprofile" target="_blank" class="text-gray-700 hover:text-blue-500 dark:hover:text-white transition-colors duration-300">
-                  <i class="fab fa-twitter text-2xl"></i>
-                </a>
-                <a href="https://twitter.com/yourprofile" target="_blank" class="text-gray-700 hover:text-blue-500 dark:hover:text-white transition-colors duration-300">
-                  <i class="fab fa-instagram text-2xl"></i>
-                </a>
-                
-              </div>
-            </div>
-            
-           
-            <div class="p-5 text-center">
-              <h3 class="text-lg font-semibold dark:text-gray-100">More Links</h3>
-              <ul class="mt-4 space-y-2">
-                <li>
-                  <a href="#privacy" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#terms" class="hover:text-white transition-colors duration-300">Terms & Conditions</a>
-                </li>
-                <li>
-                  <a href="#faq" class="hover:text-white transition-colors duration-300">FAQ</a>
-                </li>
-              </ul>
-            </div>
-            
+    {% block content %} {% endblock %}
+
+    <footer
+      class="bg-stone-100 text-stone-900 dark:bg-gray-900 dark:text-gray-400 py-8"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 items-center min-sm:divide-y sm:divide-x justify-center md:grid-cols-3 gap-8"
+        >
+          <div class="text-center">
+            <h3 class="text-lg font-semibold dark:text-gray-100">Navigation</h3>
+            <ul class="mt-4 space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="hover:text-white transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="hover:text-white transition-colors duration-300"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  class="hover:text-white transition-colors duration-300"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="hover:text-white transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
           </div>
-          
-          <!-- Bottom Line -->
-          <div class="mt-8 border-t border-gray-700 pt-4 text-center">
-            <p class="text-sm">&copy; 2024 Ankit Site reserved.</p>
+
+          <div class=" ">
+            <h3 class="text-lg font-semibold text-gray-100">Follow Me</h3>
+            <div class="mt-4 flex justify-center space-x-4">
+              <!-- GitHub -->
+              <a
+                href="https://github.com/Cipher-Soul"
+                target="_blank"
+                class="text-gray-500 dark:text-slate-100 hover:text-gray-900 dark:hover:text-blue-500 transition-colors duration-300"
+              >
+                <i class="fab fa-github text-3xl"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/soul_redesign/"
+                target="_blank"
+                class="text-gray-500 dark:text-slate-100 hover:text-gray-900 dark:hover:text-red-500 transition-colors duration-300"
+              >
+                <i class="fa-brands fa-instagram text-3xl"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="p-5 text-center">
+            <h3 class="text-lg font-semibold dark:text-gray-100">More Links</h3>
+            <ul class="mt-4 space-y-2">
+              <li>
+                <a
+                  href="#privacy"
+                  class="hover:text-white transition-colors duration-300"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#terms"
+                  class="hover:text-white transition-colors duration-300"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#faq"
+                  class="hover:text-white transition-colors duration-300"
+                  >FAQ</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
-      </footer>
-      
-    
-      <!-- JavaScript for Dark Mode Toggle and Project Filtering -->
-     <script>
+
+        <div class="mt-8 border-t border-gray-700 pt-4 text-center">
+          <p class="text-sm">&copy; 2024 Ankit Site reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
       const toggleButton = document.getElementById('theme-toggle');
       const htmlElement = document.documentElement;
-  
-      // Check if the user has already set a preference
+
+
       if (localStorage.getItem('theme') === 'dark') {
         htmlElement.classList.add('dark');
       }
-  
+
       toggleButton.addEventListener('click', function () {
         htmlElement.classList.toggle('dark');
-  
-        // Save the theme preference in localStorage
+
+
         if (htmlElement.classList.contains('dark')) {
           localStorage.setItem('theme', 'dark');
         } else {
           localStorage.removeItem('theme');
         }
       });
-        // Page Load Animation
-        $(window).on('load', function() {
-          $('.loader').fadeOut(500, function() {
-              $('#main-content').fadeIn(500);
-          });
-      });
-        // Project filtering logic
+
+
         function filterProjects(language) {
           const projects = document.querySelectorAll('.project-card');
           projects.forEach(project => {
@@ -153,41 +204,36 @@
             }
           });
         }
-    
-        document.addEventListener("DOMContentLoaded", function() {
-            const skills = document.querySelectorAll('.skill');
-            const options = {
-              root: null,
-              rootMargin: '0px',
-              threshold: 0.1 // Trigger when at least 10% of the skill element is visible
-            };
-          
-            const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  const skillPath = entry.target.querySelector('.circle');
-                  const percentage = parseInt(entry.target.querySelector('p').innerText);
-                  const dashArrayValue = percentage * 2; // Since 100% = 100 units on a circle
-          
-                  skillPath.style.strokeDasharray = `${dashArrayValue} 100`;
-                  observer.unobserve(entry.target); // Stop observing after animation
-                }
-              });
-            }, options);
-          
-            skills.forEach(skill => {
-              observer.observe(skill);
-            });
-          });
-          document.getElementById('sort-options').addEventListener('change', function() {
-            // Implement sorting logic here based on selected value
+
+          {% comment %} document.getElementById('sort-options').addEventListener('change', function() {
             console.log('Sorting by:', this.value);
-          });
-      
-          document.getElementById('language-options').addEventListener('change', function() {
-            // Implement filtering logic here based on selected value
+          }); {% endcomment %}
+
+          {% comment %} document.getElementById('language-options').addEventListener('change', function() {
             console.log('Filtering by language:', this.value);
-          });
-     </script>
-    </body>
-    </html>
+          }); {% endcomment %}
+
+
+          const menutoggleButton = document.getElementById('mobile-menu-toogle');
+        const sideMenu = document.getElementById('sideMenu');
+          const menuBtnicon=document.querySelector('#mobile-menu-toogle i')
+        menutoggleButton.addEventListener('click', () => {
+            if (sideMenu.classList.contains('-translate-x-full')) {
+
+                sideMenu.classList.remove('-translate-x-full', 'opacity-0');
+                sideMenu.classList.add('translate-x-0', 'opacity-100');
+            } else {
+                sideMenu.classList.add('-translate-x-full', 'opacity-0');
+                sideMenu.classList.remove('translate-x-0', 'opacity-100');
+            }
+
+            if (menuBtnicon.classList.contains('fa-bars-staggered')){
+              menuBtnicon.classList.replace('fa-bars-staggered','fa-x')
+            }else{
+              menuBtnicon.classList.replace('fa-x','fa-bars-staggered')
+            }
+
+        });
+    </script>
+  </body>
+</html>

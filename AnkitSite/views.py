@@ -22,9 +22,6 @@ def project(request):
     print(data)
     return render(request,'main/Project.html',data)
 
-# blog page
-def blogs(request):
-    return render(request,'main/blog.html')
 
 # Click counter
 def project_click(request, project_id):
