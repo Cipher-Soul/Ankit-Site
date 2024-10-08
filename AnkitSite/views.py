@@ -5,7 +5,9 @@ from .models import Project,Category
 def index(request):
     
     projects = Project.objects.all()[:2]
+    tools = ['fa-html5','fa-css3','fa-python','fa-js','fa-c','fa-java','fa-bootstrap','fa-react','fa-git','fa-github','fa-git-alt','fa-codepen','fa-windows','fa-linux']
     data={
+        'tools':tools,
         'projects':projects,
         # 'filters':category,
     }
